@@ -19,15 +19,20 @@ class PapuSpider(Spider):
         sel = Selector(response)
         songs = sel.xpath('//td[contains(small,"MB")]')
         for url in sel.xpath('//td[contains(small,"MB")]/a/@href').extract():
-            return Request(url, callback=self.parse2)
+            yield Request(url, callback=self.parse2)
             
-        items = []
-        for song in songs:
-            item = PapuItem()
-            item['songtitle'] = song.xpath('a/text()').extract()
-            item['link'] = song.xpath('a/@href').extract()
-            items.append(item)
-        return items
+       # for song in songs:
+       #     item = PapuItem()
+       #     item['songtitle'] = song.xpath('a/text()').extract()
+       #     item['link'] = song.xpath('a/@href').extract()
+       #     items.append(item)
+       #    return items
+        
     
     def parse2(self, response):
-        print "HEYO!"
+        sel = Selector(response)
+        durl = sel.xpath('//h1[contains(a,"User")]/a/@href').extract()
+        print durl
+        item = PapuItem()
+        item['link'] = durl
+        return item
