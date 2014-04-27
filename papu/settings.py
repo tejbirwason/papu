@@ -11,9 +11,9 @@ BOT_NAME = 'papu'
 SPIDER_MODULES = ['papu.spiders']
 NEWSPIDER_MODULE = 'papu.spiders'
 
-ITEM_PIPELINES = {'papu.files.FilesPipeline'}
+ITEM_PIPELINES = ['files.FilesPipeline',]
 
-FILES_STORE = 'Users/tejbirwason/Desktop/scrapy'
+FILES_STORE = 'down'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

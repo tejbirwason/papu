@@ -8,6 +8,6 @@ from scrapy.item import Item, Field
 class PapuItem(Item):
     # define the fields for your item here like:
     # name = Field()
-    songtitle = Field()
-    link = Field()
+    file_urls = Field()
+    files = Field()
     pass

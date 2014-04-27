@@ -32,7 +32,6 @@ class PapuSpider(Spider):
     def parse2(self, response):
         sel = Selector(response)
         durl = sel.xpath('//h1[contains(a,"User")]/a/@href').extract()
-        print durl
         item = PapuItem()
-        item['link'] = durl
-        return item
+        item['file_urls'] = durl
+        yield item
